@@ -281,6 +281,9 @@ edict_t *Bot::lookupBreakable () {
       if (game.isNullEntity (ent)) {
          return false;
       }
+      if (ent->pev->team != 0 && ent->pev->team != pev->team) {
+    return false;
+      }
       for (const auto &br : m_ignoredBreakable) {
          if (br == ent) {
             return false;
